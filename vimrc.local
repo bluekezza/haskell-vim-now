@@ -1,0 +1,71 @@
+"osclipboard[start]
+set clipboard=unnamedplus
+"osclipboard[end]
+
+"index spaces[start]
+set expandtab
+"index staces[end]
+
+"next/previous buffer
+nnoremap <tab> :bnext<CR>
+nnoremap <s-tab> :bprevious<CR>
+
+"window resizing[start]
+" Switch between window splits using big J or K and expand the split to its 
+" full size. 
+" 
+" Move vertically in the window through the horizontal splits... 
+" map <C-J> <C-w>j<C-w>_ 
+" map <C-K> <C-w>k<C-w>_ 
+
+" Move horizontally in the window through the vertical splits... 
+" map <C-H> <C-w>\> 
+" map <C-L> <C-w>\<
+"window resizing[end]
+
+" resize current buffer by +/- 5 
+" nnoremap <A-left> :vertical resize -5<cr>
+" nnoremap <A-down> :resize +5<cr>
+" nnoremap <A-up> :resize -5<cr>
+" nnoremap <A-right> :vertical resize +5<cr>
+" 
+" nnoremap <M-left> :vertical resize -5<cr>
+" nnoremap <M-down> :resize +5<cr>
+" nnoremap <M-up> :resize -5<cr>
+" nnoremap <M-right> :vertical resize +5<cr>
+
+:nmap cp :let @" = expand("%:p")
+
+"easymotion[start]
+map  <Leader><Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader><Leader>f <Plug>(easymotion-overwin-f)
+"easymotion[end]
+
+" vim-windowswap {{{
+let g:windowswap_map_keys = 0 "prevent default bindings
+nnoremap <silent> <leader>yw :call WindowSwap#MarkWindowSwap()<CR>
+nnoremap <silent> <leader>pw :call WindowSwap#DoWindowSwap()<CR>
+nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
+" }}}
+"
+
+"https://andrew.stwrt.ca/posts/project-specific-vimrc/
+set exrc
+set secure
+
+"treat purescript files as haskell syntax
+"http://vim.wikia.com/wiki/Forcing_Syntax_Coloring_for_files_with_odd_extensions
+autocmd BufNewFile,BufRead *.purs set syntax=haskell
+
+:set colorcolumn=80
+
+"FZF
+set rtp+=~/.fzf
+nnoremap <C-P> :FZF<CR>
+
+set formatoptions-=tc
+
+"number[start]
+set relativenumber
+"number[end]
+
